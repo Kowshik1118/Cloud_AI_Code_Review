@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud AI Code Review Platform</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="toast"></div>
+
+  <section id="authScreen" class="screen auth-screen">
+    <div class="auth-card">
+      <div class="brand-mark">AI</div>
+      <h1>Cloud AI Code Review</h1>
+      <p class="muted">Review your code instantly with a simple local analyzer.</p>
+
+      <div class="tabs">
+        <button class="tab active" id="loginTab">Login</button>
+        <button class="tab" id="registerTab">Register</button>
+      </div>
+
+      <form id="loginForm">
+        <label>Email</label>
+        <input id="loginEmail" type="email" value="demo@demo.com" required>
+        <label>Password</label>
+        <input id="loginPassword" type="password" value="demo123" required>
+        <button class="primary full" type="submit">Login</button>
+        <div class="demo-box">Demo: <b>demo@demo.com</b> / <b>demo123</b></div>
+      </form>
+
+      <form id="registerForm" class="hidden">
+        <label>Name</label>
+        <input id="regName" required>
+        <label>Email</label>
+        <input id="regEmail" type="email" required>
+        <label>Password</label>
+        <input id="regPassword" type="password" minlength="4" required>
+        <button class="primary full" type="submit">Create Account</button>
+      </form>
+
+      <p class="tiny">No MongoDB • No Atlas • No database • No .env</p>
+    </div>
+  </section>
+
+  <section id="appScreen" class="screen hidden">
+    <header class="topbar">
+      <div class="logo"><span>AI</span> Code Review</div>
+      <div class="top-actions">
+        <span id="userName">Demo User</span>
+        <button id="logoutBtn" class="ghost">Logout</button>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <div class="hero">
+        <div>
+          <p class="eyebrow">CODE QUALITY ASSISTANT</p>
+          <h2>Find issues before they reach production.</h2>
+          <p class="muted">Choose a language, paste code, and get a line-by-line review.</p>
+        </div>
+        <div class="status-card"><span class="dot"></span> System ready</div>
+      </div>
+
+      <div class="grid">
+        <section class="panel editor-panel">
+          <div class="panel-head">
+            <h3>Code Analyzer</h3>
+            <div class="controls">
+              <select id="language">
+                <option value="javascript">JavaScript</option>
+                <option value="python">Python</option>
+                <option value="java">Java</option>
+                <option value="cpp">C++</option>
+              </select>
+              <button id="sampleBtn" class="ghost">Load Sample</button>
+            </div>
+          </div>
+
+          <textarea id="code" spellcheck="false" placeholder="Paste your code here..."></textarea>
+
+          <div class="editor-foot">
+            <span id="lineCount">1 line</span>
+            <button id="reviewBtn" class="primary">Analyze Code</button>
+          </div>
+        </section>
+
+        <section class="panel result-panel">
+          <div class="panel-head">
+            <h3>Review Result</h3>
+            <span id="scoreBadge" class="score">—</span>
+          </div>
+
+          <div id="emptyResult" class="empty">
+            <div>
+              <div class="empty-icon">✓</div>
+              <h3>No review yet</h3>
+              <p>Run Analyze Code to see the score and exact error locations.</p>
+            </div>
+          </div>
+
+          <div id="result" class="hidden">
+            <div class="score-row">
+              <div id="bigScore" class="big-score">0</div>
+              <div>
+                <strong>Code Quality Score</strong>
+                <span id="summary" class="muted"></span>
+              </div>
+            </div>
+
+            <h3 class="findings-title">Issues & Locations</h3>
+            <div id="findings"></div>
+          </div>
+        </section>
+      </div>
+
+      <section class="panel history-panel">
+        <div class="panel-head">
+          <h3>Recent Reviews</h3>
+          <span class="muted">Current server session</span>
+        </div>
+        <div id="history" class="history-empty">No reviews yet.</div>
+      </section>
+    </main>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>

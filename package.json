@@ -1,0 +1,12 @@
+{
+  "name": "cloud-ai-code-review-platform-simple",
+  "version": "3.0.0",
+  "description": "Simple local Cloud AI Code Review Platform with a rule-based analyzer and no database.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
